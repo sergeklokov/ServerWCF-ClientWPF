@@ -1,28 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
 using System.Linq;
-using System.ServiceProcess;
+using System.Runtime.Serialization;
+using System.ServiceModel;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace ServerWCF
 {
-    public partial class Service1 : ServiceBase
+    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in both code and config file together.
+    public class Service1 : IService1
     {
-        public Service1()
+        public string GetData(int value)
         {
-            InitializeComponent();
+            return string.Format("You entered: {0}", value);
         }
 
-        protected override void OnStart(string[] args)
+        public CompositeType GetDataUsingDataContract(CompositeType composite)
         {
-        }
-
-        protected override void OnStop()
-        {
+            if (composite == null)
+            {
+                throw new ArgumentNullException("composite");
+            }
+            if (composite.BoolValue)
+            {
+                composite.StringValue += "Suffix";
+            }
+            return composite;
         }
     }
 }
