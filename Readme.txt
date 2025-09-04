@@ -1,0 +1,1 @@
+Playing with WCF Server - WPF Client in older .NET Framework 4.7.2
