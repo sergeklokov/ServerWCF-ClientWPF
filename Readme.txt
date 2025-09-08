@@ -18,6 +18,11 @@ https://learn.microsoft.com/en-us/dotnet/framework/wcf/getting-started-tutorial
 
 	netsh http add urlacl url=http://+:8080/Service1/ user=azuread\sergeklokov
 
+	Note: if error happens:
+	System.ServiceModel.AddressAccessDeniedException: 'HTTP could not register URL http://+:8080/Service1/. 
+	Your process does not have access rights to this namespace (see http://go.microsoft.com/fwlink/?LinkId=70353 for details).'
+
+
 4. Get your user name:
 	- open cmd
 	- run command: whoami

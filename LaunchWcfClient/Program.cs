@@ -12,11 +12,14 @@ namespace LaunchWcfClient
         static void Main(string[] args)
         {
 
+            var PathToWCFclientVSPro = @"C:\Program Files\Microsoft Visual Studio\2022\Professional\Common7\IDE\WcfTestClient.exe";
+            var PathToWCFclientVSComm = @"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\WcfTestClient.exe";
+            string PathToWCFclient = System.IO.File.Exists(PathToWCFclientVSPro) ? PathToWCFclientVSPro : PathToWCFclientVSComm;
+
             // Launch WCF Test Client with working directory
             var startInfo = new ProcessStartInfo
             {
-                //FileName = @"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\WcfTestClient.exe",
-                FileName = @"C:\Program Files\Microsoft Visual Studio\2022\Professional\Common7\IDE\WcfTestClient.exe",
+                FileName = PathToWCFclient,
                 WorkingDirectory = @"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\",
                 UseShellExecute = true // Ensures proper UI launch
             };
